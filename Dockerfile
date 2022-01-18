@@ -29,7 +29,7 @@ COPY shiny-server.sh /usr/bin/shiny-server.sh
 
 COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 
-RUN chmod a+x /usr/bin/shiny-server.sh
+RUN chmod a+x /usr/bin/shiny-server.sh && \
 chown -R shiny:shiny /srv/shiny-server/
 
 # copy the app directory into the image
