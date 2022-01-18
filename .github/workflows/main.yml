@@ -24,6 +24,8 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: ${{ env.CONTAINER_REGISTRY }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: Docker Build & Push to ACR
       run: |
         docker build . -t ${{ env.CONTAINER_REGISTRY }}/my-shiny-app:latest
