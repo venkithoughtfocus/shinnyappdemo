@@ -19,8 +19,18 @@ RUN R -e 'install.packages(c(\
               "ggplot2" \
             ), \
             repos="https://packagemanager.rstudio.com/cran/__linux__/focal/2021-04-23"\
-          )'
+          )' && \
+     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
+     chown shiny:shiny /var/lib/shiny-server
 
+EXPOSE 80
+
+COPY shiny-server.sh /usr/bin/shiny-server.sh
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+
+RUN chmod a+x /usr/bin/shiny-server.sh
+chown -R shiny:shiny /srv/shiny-server/
 
 # copy the app directory into the image
 COPY ./shiny-app/* /srv/shiny-server/
