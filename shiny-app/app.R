@@ -15,7 +15,7 @@ data_df <- readRDS("data-df.rds")
 ui <- fluidPage(
     
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Old Faithful Geyser Data v2"),
     
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
